@@ -6,4 +6,9 @@ todoApp.controller('todoCtrl', function ($scope) {
 	{done : false, title : 'AngularJS 포기하기'}, 
 	{done : false, title : '개인 프로젝트 구성'}
 	];
+
+	$scope.addNewTodo = function (newTitle) {
+		$scope.todoList.push({done: false, title : newTitle});
+		$scope.newTitle = '';
+	}
 });
