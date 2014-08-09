@@ -32,7 +32,7 @@
     </head>
     <body ng-controller="todoCtrl">
         <h1>AngularJS Todo App</h1>
-        <p>전체 할 일 <strong>2</strong>개 / 남은 할 일 <strong>1</strong>개 [<a href="">보관하기</a>]</p>
+        <p>전체 할 일 <strong>{{todoList.length}}</strong>개 / 남은 할 일 <strong>{{remain()}}</strong>개 [<a href="" ng-click="archive()">보관하기</a>]</p>
         <ul class="">
             <li ng-repeat="todo in todoList" class="checkbox">
                 <input type="checkbox" ng-model="todo.done">{{todo.title}}
