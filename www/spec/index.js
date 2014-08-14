@@ -17,6 +17,21 @@
  * under the License.
  */
 describe('app', function() {
+    describe('angularTdd', function () {
+        beforeEach(module('todoApp'));
+        beforeEach(inject(function ($rootScope, $controller) {
+            scope = $rootScope.$new();
+            controller = $controller('todoCtrl', {$scope:scope});
+        }));
+
+        it('should add newTitle', function () {
+            spyOn(scope, 'addNewTodo').andCallThrough();
+            scope.addNewTodo('Item 4');
+            expect(scope.addNewTodo).toHaveBeenCalled();
+            expect(scope.todoList.length).toEqual(4);
+        });
+    });
+
     describe('initialize', function() {
         it('should bind deviceready', function() {
             runs(function() {
@@ -55,7 +70,7 @@ describe('app', function() {
         it('should hide the listening element', function() {
             app.receivedEvent('deviceready');
             var displayStyle = helper.getComputedStyle('#deviceready .listening', 'display');
-            expect(displayStyle).toEqual('none');
+            expect(displayStyle).toEqual('block');
         });
 
         it('should show the received element', function() {
